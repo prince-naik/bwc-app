@@ -21,6 +21,9 @@ import ManageUsers from './pages/ManageUsers';
 import SermonList from './components/SermonList';
 import EventList from './components/EventList';
 import YouthList from './components/YouthList';
+import WorshipVideos from './pages/WorshipVideos';
+
+
 
 
 
@@ -55,10 +58,14 @@ function App() {
           <Route path="/youth" element={<Youth />} />
 
           <Route path="/youthm" element={<YouthList />} />
-          
+
 
 
           <Route path="/users" element={<ManageUsers />} />
+
+          <Route path="/worshipvideos" element={<WorshipVideos />} />
+          <Route path="/worshipvideos" element={<WorshipVideos />} />
+          <Route path="/worshipvideosm" element={<WorshipVideos viewOnly />} />
 
         </Routes>
       </Router>

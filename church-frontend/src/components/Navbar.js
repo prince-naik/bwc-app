@@ -32,13 +32,11 @@ function AppNavbar() {
                   as={Link}
                   to={
                     role === 'Admin' ? '/admin' :
-                      role === 'Pastor' ? '/pastor' :
-                        role === 'Volunteer' ? '/volunteer' :
-                          '/member'
+                    role === 'Pastor' ? '/pastor' :
+                    role === 'Volunteer' ? '/volunteer' :
+                    '/member'
                   }
-                  active={
-                    ['/admin', '/pastor', '/volunteer', '/member'].includes(location.pathname)
-                  }
+                  active={['/admin', '/pastor', '/volunteer', '/member'].includes(location.pathname)}
                 >
                   Dashboard
                 </Nav.Link>
@@ -59,7 +57,6 @@ function AppNavbar() {
                   </Nav.Link>
                 )}
 
-
                 {(role === 'Admin' || role === 'Pastor') && (
                   <Nav.Link as={Link} to="/sermons" active={isActive('/sermons')}>
                     Sermons
@@ -73,6 +70,16 @@ function AppNavbar() {
                     active={isActive(role === 'Volunteer' ? '/youthm' : '/youth')}
                   >
                     Youth Tracker
+                  </Nav.Link>
+                )}
+
+                {token && (
+                  <Nav.Link
+                    as={Link}
+                    to={role === 'Admin' ? '/worshipvideos' : '/worshipvideosm'}
+                    active={isActive(role === 'Admin' ? '/worshipvideos' : '/worshipvideosm')}
+                  >
+                    Worship Videos
                   </Nav.Link>
                 )}
 
