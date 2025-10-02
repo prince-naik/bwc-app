@@ -16,8 +16,18 @@ function LoginForm() {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const res = await axios.post(
+        'http://localhost:5000/api/auth/login',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('role', res.data.role);
 
@@ -29,7 +39,10 @@ function LoginForm() {
         else navigate('/member');
       }, 1500);
     } catch (err) {
-      toast.error('Login failed. Check your credentials.');
+      const message =
+        err.response?.data?.message || 'Login failed. Check your credentials.';
+      toast.error(message);
+      console.error('Login error:', err.response?.data || err.message);
     } finally {
       setLoading(false);
     }

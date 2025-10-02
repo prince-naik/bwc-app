@@ -14,9 +14,6 @@ const youthRoutes = require('./routes/youth');
 const userRoutes = require('./routes/users');
 
 
-
-
-
 dotenv.config();
 connectDB();
 
